@@ -3,13 +3,14 @@
 A polished Streamlit flashcard app with persistent SQLite storage.
 
 ## Features
-- Show/hide answers, previous/next navigation, shuffle
+- Show/hide answers, previous/next navigation, and shuffle
 - Add, edit, and delete cards with validation
-- Starter deck and card count/progress indicator
-- Custom responsive styling and SQLite persistence
+- Starter deck and progress indicator
+- Custom styling and SQLite persistence
 
-## Run
-`pip install -r requirements.txt`
-`streamlit run app.py`
-
+## Run locally
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
 The app creates `flashcards.db` automatically beside `app.py`.

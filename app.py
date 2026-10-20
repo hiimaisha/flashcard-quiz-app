@@ -18,7 +18,7 @@ with connect() as c:
     if c.execute("SELECT COUNT(*) FROM cards").fetchone()[0]==0:
         c.executemany("INSERT INTO cards(question,answer) VALUES (?,?)",[("What does HTML stand for?","HyperText Markup Language"),("What is a Python dictionary?","A collection that stores key-value pairs."),("What does SQL stand for?","Structured Query Language"),("What is an algorithm?","A finite sequence of steps to solve a problem.")])
 def all_cards():
-    with connect() as c: return c.execute("SELECT id,question,answer FROM cards ORDER BY id").fetchall()
+    with connect() as c: return [dict(row) for row in c.execute("SELECT id,question,answer FROM cards ORDER BY id").fetchall()]
 def esc(s): return s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace('"',"&quot;").replace("'","&#x27;")
 st.markdown('<div class="hero"><h1>🧠 Flashcard Studio</h1><p>Learn actively. Reveal answers, move at your pace, and build your own deck.</p></div>',unsafe_allow_html=True)
 cards=all_cards()
